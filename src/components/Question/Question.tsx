@@ -1,9 +1,10 @@
+import QuestionBox from "../UI/QuestionBox";
 import { Wrapper } from "./styled";
 
 const Question = () => {
   return (
     <Wrapper>
-      <div>hi</div>
+      <QuestionBox />
     </Wrapper>
   );
 };

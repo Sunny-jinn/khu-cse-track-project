@@ -67,13 +67,19 @@ const ExampleImg = styled.img`
 `;
 
 const Main: React.FC = () => {
-  const [fileName, setFileName] = useState<string>("");
+  const [file, setFile] = useState<File | null>();
+  const [fileExtension, setFileExtension] = useState<string | null>();
 
   const fileUploadHandle = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     if (e.target.files) {
-      const file: File | null = e.target.files[0];
-      setFileName(file.name);
+      setFile(e.target.files[0]);
+
+      const fileNameParts = e.target.files[0].name.split(".");
+      if (fileNameParts.length > 1) {
+        const extension = fileNameParts.pop()!.toLowerCase(); // 소문자로 변환
+        setFileExtension(extension);
+      }
     }
   };
 
@@ -89,10 +95,15 @@ const Main: React.FC = () => {
               marginBottom: 40,
             }}
           >
-            {fileName && (
+            {file && (
               <>
-                <ExampleImg src="/assets/pdf.png" alt="파일" />
-                {fileName}
+                <ExampleImg
+                  src={`/assets/${
+                    fileExtension === "pdf" ? "pdf" : "docx"
+                  }.png`}
+                  alt="파일"
+                />
+                {file.name}
               </>
             )}
           </div>
@@ -102,7 +113,7 @@ const Main: React.FC = () => {
             id="file"
             onChange={fileUploadHandle}
             style={{ display: "none" }}
-            accept=".pdf, .docx"
+            accept=".pdf, .docx, .doc"
           />
           <UploadLabel htmlFor="file">파일 선택</UploadLabel>
         </FileDiv>

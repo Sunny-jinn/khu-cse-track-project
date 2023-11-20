@@ -13,6 +13,7 @@ export const QuestionInput = styled.input`
   font-size: 16px;
   outline: none;
   padding-top: 10px;
+  font-weight: 500;
 `;
 
 export const SendButton = styled.button`

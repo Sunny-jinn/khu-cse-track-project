@@ -1,4 +1,4 @@
-import { Container, Wrapper, DarkModeIcon } from "./styled";
+import { Container, Wrapper, DarkModeIcon, Title } from "./styled";
 import { DarkMode } from "@emotion-icons/material-outlined/DarkMode";
 import { LightMode } from "@emotion-icons/material/LightMode";
 import { useRecoilState } from "recoil";
@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <Container>
       <Wrapper>
-        <div>뭐든지 물어봐!</div>
+        <Title>뭐든지 물어봐!</Title>
         <DarkModeIcon onClick={clickHandle}>
           {isDarkMode ? <DarkMode width={30} /> : <LightMode width={30} />}
 

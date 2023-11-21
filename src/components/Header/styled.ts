@@ -9,6 +9,11 @@ export const Container = styled.header`
   color: ${(props) => props.theme.mode.color};
 `;
 
+export const Title = styled.div`
+  font-size: 1.5rem;
+  font-family: "Black Han Sans", sans-serif;
+`;
+
 export const Wrapper = styled.div`
   width: 1200px;
   display: flex;

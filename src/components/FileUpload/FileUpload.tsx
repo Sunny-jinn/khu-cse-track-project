@@ -7,6 +7,7 @@ const FileUpload = () => {
   const [file, setFile] = useState<FileList | null>();
   const [fileExtension, setFileExtension] = useState<string | null>();
 
+  // eslint-disable-next-line
   const [context, setContext] = useRecoilState(contextState);
 
   const fileUploadHandle = (e: ChangeEvent<HTMLInputElement>) => {

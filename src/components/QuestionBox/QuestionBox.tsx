@@ -9,7 +9,9 @@ const QuestionBox: React.FC = () => {
   const [question, setQuestion] = useState<string>("");
   const [isFile, setIsFile] = useState<boolean>(false);
 
+  // eslint-disable-next-line
   const [chatting, setChatting] = useRecoilState(chatState);
+  // eslint-disable-next-line
   const [context, setContext] = useRecoilState(contextState);
 
   const clickHandler = async () => {

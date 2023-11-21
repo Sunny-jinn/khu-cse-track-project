@@ -36,12 +36,23 @@ const QuestionBox: React.FC = () => {
         });
         if (res.ok) {
           const data = await res.json();
-          const answer = {
-            id: Math.random(),
-            text: data.answer,
-            isUser: false,
-          };
-          setChatting((prevChatting) => [...prevChatting, answer]);
+          if (data) {
+            const answer = {
+              id: Math.random(),
+              text: data.answer,
+              isUser: false,
+            };
+
+            setChatting((prevChatting) => [...prevChatting, answer]);
+          } else {
+            const answer = {
+              id: Math.random(),
+              text: "죄송합니다. 질문을 다시 입력해주세요.",
+              isUser: false,
+            };
+
+            setChatting((prevChatting) => [...prevChatting, answer]);
+          }
 
           setQuestion("");
         }

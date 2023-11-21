@@ -16,7 +16,10 @@ const FileUpload = () => {
 
       const fileNameParts = e.target.files[0].name.split(".");
       if (fileNameParts.length > 1) {
-        const extension = fileNameParts.pop()!.toLowerCase(); // 소문자로 변환
+        let extension = fileNameParts.pop()!.toLowerCase(); // 소문자로 변환
+        if (extension === "doc") {
+          extension = "docx";
+        }
         setFileExtension(extension);
       }
     }
@@ -58,10 +61,7 @@ const FileUpload = () => {
       >
         {file && (
           <>
-            <PreviewImg
-              src={`/assets/${fileExtension === "pdf" ? "pdf" : "docx"}.png`}
-              alt="파일"
-            />
+            <PreviewImg src={`/assets/${fileExtension}.png`} alt="파일" />
             {file[0].name}
           </>
         )}

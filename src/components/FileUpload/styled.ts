@@ -1,16 +1,5 @@
 import styled from "@emotion/styled";
 
-export const FileDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 280px;
-  height: 700px;
-  border-right: 2px solid #e0e0e0;
-  color: ${(props) => props.theme.mode.color};
-`;
-
 const commonStyle = `
   display: flex;
   justify-content: center;
@@ -31,6 +20,17 @@ const commonStyle = `
   &:active {
     background: #17225b; // 어두운 색상으로 변경
   }
+`;
+
+export const FileDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 280px;
+  height: 700px;
+  border-right: 2px solid #e0e0e0;
+  color: ${(props) => props.theme.mode.color};
 `;
 
 export const UploadLabel = styled.label`

@@ -62,6 +62,14 @@ const QuestionBox: React.FC = () => {
     }
   };
 
+  const handleEnterKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.nativeEvent.isComposing) return; // 한글 입력 시 두 번 event 감지하는 것 방지
+    if (e.key === "Enter") {
+      e.preventDefault();
+      clickHandler();
+    }
+  };
+
   useEffect(() => {
     if (context.length !== 0) {
       setIsFile(true);
@@ -75,6 +83,7 @@ const QuestionBox: React.FC = () => {
         ref={inputRef}
         onChange={(e) => setQuestion(e.target.value)}
         disabled={!isFile}
+        onKeyDown={handleEnterKey}
       />
       <SendButton onClick={clickHandler}>
         <SendPlane />

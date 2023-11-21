@@ -13,23 +13,23 @@ export const Wrapper = styled.div`
   }
 `;
 
+const commonStyle = `
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    overflow-wrap: break-word;
+    margin-bottom: 20px;
+`;
+
 export const UserChatBox = styled.div`
+  ${commonStyle}
   margin-left: auto;
-  padding: 20px;
-  border-radius: 10px;
   background: #eeeeee;
-  max-width: 600px;
-  overflow-wrap: break-word;
-  margin-bottom: 20px;
 `;
 
 export const ComChatBox = styled.div`
+  ${commonStyle}
   margin-right: auto;
-  padding: 20px;
-  border-radius: 10px;
   background: #3b58e6;
   color: #fff;
-  max-width: 600px;
-  overflow-wrap: break-word;
-  margin-bottom: 20px;
 `;

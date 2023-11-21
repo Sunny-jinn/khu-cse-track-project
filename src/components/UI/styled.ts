@@ -12,8 +12,13 @@ export const QuestionInput = styled.input`
   height: 50px;
   font-size: 16px;
   outline: none;
-  padding-top: 10px;
+  padding-top: 20px;
   font-weight: 500;
+
+  &:disabled {
+    background: none;
+    color: red;
+  }
 `;
 
 export const SendButton = styled.button`

@@ -1,16 +1,18 @@
 import { useRecoilState } from "recoil";
 import { QuestionInput, SendButton, Wrapper } from "./styled";
 import { SendPlane } from "@emotion-icons/remix-fill/SendPlane";
-import { chatState } from "../../store";
+import { chatState, contextState } from "../../store";
 import { useEffect, useRef, useState } from "react";
 
 const QuestionBox: React.FC = () => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [question, setQuestion] = useState<string>("");
+  const [isFile, setIsFile] = useState<boolean>(false);
 
   const [chatting, setChatting] = useRecoilState(chatState);
+  const [context, setContext] = useRecoilState(contextState);
 
-  const clickHandler = () => {
+  const clickHandler = async () => {
     if (question.trim() !== "") {
       const newMsg = {
         id: Math.random(),
@@ -18,24 +20,50 @@ const QuestionBox: React.FC = () => {
         isUser: true,
       };
 
-      setChatting([...chatting, newMsg]);
+      setChatting((prevChatting) => [...prevChatting, newMsg]);
 
       inputRef.current!.value = "";
+      try {
+        const res = await fetch("http://127.0.0.1:8000/chat/chatbot/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams({
+            question: question,
+            context: context,
+          }),
+        });
+        if (res.ok) {
+          const data = await res.json();
+          const answer = {
+            id: Math.random(),
+            text: data.answer,
+            isUser: false,
+          };
+          setChatting((prevChatting) => [...prevChatting, answer]);
 
-      setQuestion("");
+          setQuestion("");
+        }
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 
   useEffect(() => {
-    console.log(chatting);
-  }, [chatting]);
+    if (context.length !== 0) {
+      setIsFile(true);
+    }
+  }, [context]);
 
   return (
     <Wrapper>
       <QuestionInput
-        placeholder="질문을 입력하세요"
+        placeholder={!isFile ? "파일을 업로드 해주세요" : "질문을 입력하세요"}
         ref={inputRef}
         onChange={(e) => setQuestion(e.target.value)}
+        disabled={!isFile}
       />
       <SendButton onClick={clickHandler}>
         <SendPlane />

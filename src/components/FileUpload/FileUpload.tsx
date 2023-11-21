@@ -1,9 +1,13 @@
 import { ChangeEvent, useState } from "react";
 import { FileDiv, PreviewImg, SendButton, UploadLabel } from "./styled";
+import { useRecoilState } from "recoil";
+import { contextState } from "../../store";
 
 const FileUpload = () => {
   const [file, setFile] = useState<FileList | null>();
   const [fileExtension, setFileExtension] = useState<string | null>();
+
+  const [context, setContext] = useRecoilState(contextState);
 
   const fileUploadHandle = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -31,7 +35,9 @@ const FileUpload = () => {
           body: formData,
         });
         if (res.ok) {
-          console.log("업로드 성공");
+          const data = await res.json();
+          console.log("파일 업로드 성공!");
+          setContext(data.combined_text);
         } else {
           console.log("업로드 실패");
         }
@@ -66,7 +72,7 @@ const FileUpload = () => {
         id="file"
         onChange={fileUploadHandle}
         style={{ display: "none" }}
-        accept=".pdf, .docx, .doc"
+        accept=".pdf, .docx, .doc, .txt"
       />
       <UploadLabel htmlFor="file">파일 선택</UploadLabel>
       <SendButton onClick={clickHandle}>업로드</SendButton>

@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import FileUpload from "./FileUpload/FileUpload";
 import Question from "./Question/Question";
 import Footer from "./Footer/Footer";
+import Header from "./Header/Header";
 
 const Container = styled.div`
   width: 100%;
@@ -20,6 +21,7 @@ const Wrapper = styled.div`
 const Main: React.FC = () => {
   return (
     <Container>
+      <Header />
       <Wrapper>
         <FileUpload />
         <Question />

@@ -29,8 +29,10 @@ export const DarkModeIcon = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition: 0.3s ease-in-out;
 
   &:hover {
     background: #eeeeee;
+    color: #000;
   }
 `;

@@ -1,11 +1,18 @@
 import { ChangeEvent, useState } from "react";
-import { FileDiv, PreviewImg, SendButton, UploadLabel } from "./styled";
+import {
+  FileDiv,
+  PreviewImg,
+  SendButton,
+  UploadLabel,
+  UploadText,
+} from "./styled";
 import { useRecoilState } from "recoil";
 import { contextState } from "../../store";
 
 const FileUpload = () => {
   const [file, setFile] = useState<FileList | null>();
   const [fileExtension, setFileExtension] = useState<string | null>();
+  const [uploadSuccess, setUploadSuccess] = useState<boolean>(false);
 
   // eslint-disable-next-line
   const [context, setContext] = useRecoilState(contextState);
@@ -42,6 +49,12 @@ const FileUpload = () => {
           const data = await res.json();
           console.log("파일 업로드 성공!");
           setContext(data.combined_text);
+
+          setUploadSuccess(true);
+
+          setTimeout(() => {
+            setUploadSuccess(false);
+          }, 2000);
         } else {
           console.log("업로드 실패");
         }
@@ -77,6 +90,7 @@ const FileUpload = () => {
       />
       <UploadLabel htmlFor="file">파일 선택</UploadLabel>
       <SendButton onClick={clickHandle}>업로드</SendButton>
+      <UploadText>{uploadSuccess && <>업로드 완료!</>}</UploadText>
     </FileDiv>
   );
 };

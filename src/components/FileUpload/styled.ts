@@ -47,3 +47,10 @@ export const PreviewImg = styled.img`
   width: 100%;
   height: 180px;
 `;
+
+export const UploadText = styled.div`
+  margin-top: 20px;
+  height: 30px;
+  color: #3b58e6;
+  font-weight: 600;
+`;

@@ -36,7 +36,7 @@ const QuestionBox: React.FC = () => {
         });
         if (res.ok) {
           const data = await res.json();
-          if (data) {
+          if (data.answer) {
             const answer = {
               id: Math.random(),
               text: data.answer,

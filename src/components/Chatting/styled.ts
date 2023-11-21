@@ -4,6 +4,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  padding-bottom: 30px;
 
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -18,7 +19,8 @@ const commonStyle = `
     border-radius: 10px;
     max-width: 600px;
     overflow-wrap: break-word;
-    margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 `;
 
 export const UserChatBox = styled.div`

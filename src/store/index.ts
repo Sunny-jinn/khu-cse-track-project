@@ -26,7 +26,7 @@ export const contextState = atom<string>({
 
 export const modeState = atom<boolean>({
   key: "modeState",
-  default: false,
+  default: true,
 });
 
 export const modeCurrentState = selector<boolean>({

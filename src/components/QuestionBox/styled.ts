@@ -13,6 +13,7 @@ export const QuestionInput = styled.input`
   font-size: 16px;
   outline: none;
   padding-top: 20px;
+  padding-right: 40px;
   font-weight: 500;
 
   &:disabled {
@@ -29,7 +30,7 @@ export const SendButton = styled.button`
   border: none;
   position: absolute;
   right: 0;
-  top: 15px;
+  top: 17px;
   transition: 0.3s ease-in-out;
 
   &:hover {

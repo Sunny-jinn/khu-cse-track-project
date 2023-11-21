@@ -11,10 +11,10 @@ const FileUpload = () => {
 
   const fileUploadHandle = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    if (e.target.files) {
+    if (e.target.files!.length !== 0) {
       setFile(e.target.files);
 
-      const fileNameParts = e.target.files[0].name.split(".");
+      const fileNameParts = e.target.files![0].name.split(".");
       if (fileNameParts.length > 1) {
         let extension = fileNameParts.pop()!.toLowerCase(); // 소문자로 변환
         if (extension === "doc") {

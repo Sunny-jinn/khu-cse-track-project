@@ -20,7 +20,7 @@ const QuestionBox: React.FC = () => {
 
       setChatting([...chatting, newMsg]);
 
-      inputRef.current.value = "";
+      inputRef.current!.value = "";
 
       setQuestion("");
     }

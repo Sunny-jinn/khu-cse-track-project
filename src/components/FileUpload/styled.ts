@@ -8,6 +8,7 @@ export const FileDiv = styled.div`
   width: 280px;
   height: 700px;
   border-right: 2px solid #e0e0e0;
+  color: ${(props) => props.theme.mode.color};
 `;
 
 const commonStyle = `

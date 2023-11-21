@@ -6,6 +6,8 @@ import Header from "./Header/Header";
 
 const Container = styled.div`
   width: 100%;
+  background: ${(props) => props.theme.mode.background};
+  transition: 0.3s ease-in-out;
   /* padding-top: 200px; */
 `;
 

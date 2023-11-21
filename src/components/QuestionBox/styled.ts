@@ -15,9 +15,10 @@ export const QuestionInput = styled.input`
   padding-top: 20px;
   padding-right: 40px;
   font-weight: 500;
+  color: ${(props) => props.theme.mode.color};
 
+  background: none;
   &:disabled {
-    background: none;
     color: red;
   }
 `;
@@ -32,6 +33,7 @@ export const SendButton = styled.button`
   right: 0;
   top: 17px;
   transition: 0.3s ease-in-out;
+  color: ${(props) => props.theme.mode.color};
 
   &:hover {
     background: #dddddd;

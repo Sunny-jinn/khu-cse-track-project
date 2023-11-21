@@ -23,3 +23,16 @@ export const contextState = atom<string>({
   key: "contextState",
   default: "",
 });
+
+export const modeState = atom<boolean>({
+  key: "modeState",
+  default: false,
+});
+
+export const modeCurrentState = selector<boolean>({
+  key: "modeCurrentState",
+  get: ({ get }) => {
+    const currentState = get(modeState);
+    return currentState;
+  },
+});

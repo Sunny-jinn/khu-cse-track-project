@@ -1,10 +1,11 @@
 import { Container, Wrapper, DarkModeIcon } from "./styled";
 import { DarkMode } from "@emotion-icons/material-outlined/DarkMode";
 import { LightMode } from "@emotion-icons/material/LightMode";
-import { useState } from "react";
+import { useRecoilState } from "recoil";
+import { modeState } from "../../store";
 
 const Header = () => {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+  const [isDarkMode, setIsDarkMode] = useRecoilState(modeState);
 
   const clickHandle = () => {
     setIsDarkMode((isDarkMode) => !isDarkMode);

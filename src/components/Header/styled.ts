@@ -5,7 +5,8 @@ export const Container = styled.header`
   height: 70px;
   display: flex;
   justify-content: center;
-  border-bottom: 0.5px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 0.5px solid ${(props) => props.theme.mode.border};
+  color: ${(props) => props.theme.mode.color};
 `;
 
 export const Wrapper = styled.div`

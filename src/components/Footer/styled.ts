@@ -4,11 +4,13 @@ export const Container = styled.div`
   margin-top: auto;
   width: 100%;
   height: 250px;
-  background: #fafafa;
+  background: ${(props) => props.theme.mode.footerBack};
+  color: ${(props) => props.theme.mode.color};
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  transition: 0.3s ease-in-out;
 `;
 
 export const Wrapper = styled.div`
